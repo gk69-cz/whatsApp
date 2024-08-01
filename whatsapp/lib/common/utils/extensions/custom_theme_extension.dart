@@ -1,0 +1,86 @@
+import 'package:flutter/material.dart';
+import 'package:whatsapp/common/utils/coolors.dart';
+
+
+extension ExtendedTheme on BuildContext {
+  CustomThemeExtension get theme {
+
+  return Theme.of(this).extension<CustomThemeExtension>()!;
+  }}
+
+class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
+  static const lightMode = CustomThemeExtension(
+    circleImageColor: Color(0xFF25D366),
+    backgroundColor: Color.fromARGB(255, 255, 255, 255),
+    greyColor: Coolors.greyLight,
+    blueColor: Coolors.blueLight,
+    titleText: Colors.black,
+    langBtnBgColor: Color(0xFFF7f8f),
+    langBtnHighlightColor: Color(0xFFE8E8ED),
+  );
+  static const darkMode = CustomThemeExtension(
+    circleImageColor: Coolors.greenDark,
+    backgroundColor: Color.fromARGB(191, 24, 34, 41),
+    greyColor: Coolors.greyDark,
+    blueColor: Coolors.blueDark,
+    titleText: Colors.white,
+    langBtnBgColor: Color(0xFF182229),
+    langBtnHighlightColor: Color(0xFF09141a),
+  );
+  final Color? circleImageColor;
+  final Color? backgroundColor;
+  final Color? greyColor;
+  final Color? blueColor;
+  final Color? langBtnBgColor;
+  final Color? langBtnHighlightColor;
+  final Color? titleText;
+
+  const CustomThemeExtension(
+      {this.circleImageColor,
+      this.backgroundColor,
+      this.greyColor,
+      this.titleText,
+      this.blueColor,
+      this.langBtnBgColor,
+      this.langBtnHighlightColor});
+
+  @override
+  ThemeExtension<CustomThemeExtension> copyWith({
+      Color? circleImageColor,
+      Color? backgroundColor,
+      Color? greyColor,
+       Color? titleText,
+      Color? blueColor,
+      Color? langBtnBgColor,
+      Color? langBtnHighlightColor }) {
+
+
+   return CustomThemeExtension(
+    circleImageColor: circleImageColor ?? this.circleImageColor,
+    backgroundColor: backgroundColor ?? this.backgroundColor,
+    titleText: titleText ?? this.titleText,
+    greyColor: greyColor ?? this.greyColor,
+    blueColor: blueColor ?? this.blueColor,
+    langBtnBgColor: langBtnBgColor ?? this.langBtnBgColor,
+    langBtnHighlightColor: langBtnHighlightColor ?? this.langBtnHighlightColor,
+    );
+
+   
+  }
+
+  @override
+  ThemeExtension<CustomThemeExtension> lerp(
+       ThemeExtension<CustomThemeExtension>? other, double t) {
+    if(other is! CustomThemeExtension) return this;
+    return CustomThemeExtension(
+       circleImageColor: Color.lerp(circleImageColor, other.circleImageColor, t) ,
+     
+      titleText: Color.lerp(titleText, other.titleText, t) ,
+      backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t) ,
+      greyColor: Color.lerp(greyColor, other.greyColor, t),
+      blueColor: Color.lerp(blueColor, other.blueColor, t),
+      langBtnBgColor: Color.lerp(langBtnBgColor, other.langBtnBgColor,
+      t));
+    
+  }
+}
