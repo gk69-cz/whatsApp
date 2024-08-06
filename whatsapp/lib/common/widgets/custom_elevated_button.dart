@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:whatsapp/common/utils/coolors.dart';
 
 class custom_elevated_button extends StatelessWidget {
   final double? buttonWidth;
@@ -17,7 +16,7 @@ class custom_elevated_button extends StatelessWidget {
       width: buttonWidth ?? MediaQuery.of(context).size.width - 100,
       child: ElevatedButton(
           onPressed: onPressed,
-          child: Text(text,style: TextStyle(
+          child: Text(text,style: const TextStyle(
             color: Colors.white
           ),)
           ),

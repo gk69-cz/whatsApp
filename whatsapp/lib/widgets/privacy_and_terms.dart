@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:whatsapp/common/utils/coolors.dart';
 import 'package:whatsapp/common/utils/extensions/custom_theme_extension.dart';
 
 class privacy_policy extends StatelessWidget {
@@ -29,7 +28,7 @@ class privacy_policy extends StatelessWidget {
                     height: 1.5,
                   ),
                 ),
-                TextSpan(
+                const TextSpan(
                   text: 'Tap "Agree and Continue" to accept the ',
                 ),
                 TextSpan(

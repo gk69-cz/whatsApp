@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/common/utils/thems/dark_theme.dart';
 import 'package:whatsapp/common/utils/thems/light_theme.dart';
-import 'package:whatsapp/features/welcome/pages/welcome_page.dart';
+import 'package:whatsapp/features/auth/pages/user_info_page.dart';
 
 void main() {
   runApp(const MainApp());
@@ -13,12 +13,12 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Whats App Clone',
       theme: lightTheme(), // Assuming you have a lightTheme() function
       darkTheme: darkTheme(),
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
-      home: WelcomePage(),
+      home: const UserInfoPage(),
     );
   }
 }
