@@ -6,7 +6,7 @@ class CustomTextField extends StatelessWidget {
 
  final String? hintText;
   final bool? readOnly;
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final TextAlign? textAlign;
   final TextInputType? keyboardType;
   final String? prefixText;
@@ -16,7 +16,7 @@ class CustomTextField extends StatelessWidget {
   final bool? autoFocus;
   final Function(String)? onChanged;
 
-  const CustomTextField({super.key, this.hintText, this.readOnly, this.textAlign, this.keyboardType, this.prefixText, this.onTap, this.suffixIcon, this.onChanged, required this.controller, this.fontSize, this.autoFocus});
+  const CustomTextField({super.key, this.hintText, this.readOnly, this.textAlign, this.keyboardType, this.prefixText, this.onTap, this.suffixIcon, this.onChanged, this.controller, this.fontSize, this.autoFocus});
 
  
 

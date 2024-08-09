@@ -18,6 +18,9 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
     authAppbarTextColor: Coolors.greenLight,
     langBtnBgColor: Color(0x0fff7f8f),
     langBtnHighlightColor: Color(0xFFE8E8ED),
+    photoIconBgColor: Color(0xFFF0F2F3),
+    photoIconColor: Color(0xFF9DAAB3),
+
   );
   static const darkMode = CustomThemeExtension(
     circleImageColor: Coolors.greenDark,
@@ -28,6 +31,8 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
     langBtnBgColor: Color(0xFF182229),
     authAppbarTextColor: Color(0xFFE9EDEF),
     langBtnHighlightColor: Color(0xFF09141a),
+    photoIconBgColor: Color(0xFF283339),
+    photoIconColor: Color(0xFF61717B),
   );
   final Color? circleImageColor;
   final Color? backgroundColor;
@@ -37,6 +42,8 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
   final Color? langBtnHighlightColor;
   final Color? titleText;
   final Color? authAppbarTextColor;
+  final Color? photoIconBgColor;
+  final Color? photoIconColor;
 
   const CustomThemeExtension(
       {this.circleImageColor,
@@ -47,6 +54,8 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
       this.langBtnBgColor,
       this.langBtnHighlightColor,
       this.authAppbarTextColor,
+      this.photoIconBgColor,
+      this.photoIconColor,
       });
 
   @override
@@ -59,6 +68,8 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
       Color? langBtnBgColor,
       Color? langBtnHighlightColor,
        Color? authAppbarTextColor,
+        Color? photoIconBgColor,
+         Color? photoIconColor,
        }) {
 
 
@@ -71,6 +82,11 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
     authAppbarTextColor: authAppbarTextColor ?? this.authAppbarTextColor,
     langBtnBgColor: langBtnBgColor ?? this.langBtnBgColor,
     langBtnHighlightColor: langBtnHighlightColor ?? this.langBtnHighlightColor,
+    
+     photoIconBgColor: photoIconBgColor ?? this.photoIconBgColor,
+   
+    photoIconColor: photoIconColor ?? this.photoIconColor,
+   
     );
 
    
