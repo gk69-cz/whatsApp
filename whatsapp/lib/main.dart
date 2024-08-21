@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whatsapp/common/routes/routes.dart';
 import 'package:whatsapp/common/utils/thems/dark_theme.dart';
 import 'package:whatsapp/common/utils/thems/light_theme.dart';
-import 'package:whatsapp/features/auth/pages/user_info_page.dart';
 import 'package:whatsapp/features/welcome/pages/welcome_page.dart';
 
 import 'firebase_options.dart';
@@ -14,7 +13,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(ProviderScope(child: MainApp()));
+  runApp(const ProviderScope(child: MainApp()));
 }
 
 class MainApp extends StatelessWidget {

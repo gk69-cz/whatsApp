@@ -3,8 +3,7 @@ import 'package:whatsapp/common/utils/extensions/custom_theme_extension.dart';
 
 showAlertDialog({
   required BuildContext context,
-  required String message,
-  String? btnText,
+  String? btnText, required String message,
 }){
   return showDialog(
     context: context,
