@@ -13,7 +13,9 @@ import 'package:whatsapp/features/auth/pages/image_picker.dart';
 import 'package:whatsapp/features/auth/widgets/custom_text_field.dart';
 
 class UserInfoPage extends ConsumerStatefulWidget {
-  const UserInfoPage({super.key});
+  const UserInfoPage({super.key,this.profileImageUrl});
+
+  final String? profileImageUrl;
 
   @override
   ConsumerState<UserInfoPage> createState() => _UserInfoPageState();
@@ -35,7 +37,7 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
     }
     ref.read(authControllerProvider).saveUserInfoToFirestore(
         username: username,
-        profileImage: imageCamera ?? imageGallery ?? '',
+        profileImage: imageCamera ?? imageGallery ?? widget.profileImageUrl ?? '',
         context: context,
         mounted: mounted);
   }
@@ -191,12 +193,12 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
                             ? Colors.transparent
                             : context.theme.greyColor!.withOpacity(0.4),
                       ),
-                      image: imageCamera != null || imageGallery != null
+                      image: imageCamera != null || imageGallery != null || widget.profileImageUrl != null
                           ? DecorationImage(
                               fit: BoxFit.cover,
                               image: imageGallery != null
                                   ? MemoryImage(imageGallery!) as ImageProvider
-                                  : FileImage(imageCamera!),
+                                  : widget.profileImageUrl != null ? NetworkImage(widget.profileImageUrl!) : FileImage(imageCamera!) as ImageProvider,
                             )
                           : null),
                   child: Padding(
@@ -204,7 +206,7 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
                     child: Icon(
                       Icons.add_a_photo_rounded,
                       size: 48,
-                      color: imageCamera == null && imageGallery == null
+                      color: imageCamera == null && imageGallery == null && widget.profileImageUrl == null
                           ? context.theme.photoIconColor
                           : Colors.transparent,
                     ),

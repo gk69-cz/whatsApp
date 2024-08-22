@@ -35,8 +35,6 @@ if(phoneNumber.isEmpty){
   return showAlertDialog(context: context, message: "This number is too long for the country $countryName");
 }
 
-print('+$countryCode$phoneNumber');
-
 //request a verification code
 
 ref.read(authControllerProvider).sendSmsCode(

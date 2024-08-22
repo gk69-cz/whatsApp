@@ -6,17 +6,18 @@ import 'package:whatsapp/features/auth/controllers/auth_controller.dart';
 import 'package:whatsapp/features/auth/widgets/custom_text_field.dart';
 
 class VerificationPage extends ConsumerWidget {
-  
   const VerificationPage(
-    {super.key,
-     required this.smsCodeId,
-      required this.phoneNumber});
-final String smsCodeId;
+      {super.key, required this.smsCodeId, required this.phoneNumber});
+  final String smsCodeId;
   final String phoneNumber;
 
-void verifySmsCode(BuildContext context,WidgetRef ref,String smsCode){
-  ref.read(authControllerProvider).verifySmsCode(context: context, smsCodeId: smsCodeId, smsCode: smsCode, mounted: true);
-}
+  void verifySmsCode(BuildContext context, WidgetRef ref, String smsCode) {
+    ref.read(authControllerProvider).verifySmsCode(
+        context: context,
+        smsCodeId: smsCodeId,
+        smsCode: smsCode,
+        mounted: true);
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -51,7 +52,7 @@ void verifySmsCode(BuildContext context,WidgetRef ref,String smsCode){
               children: [
                 const TextSpan(
                     text:
-                        'You have tried to register +98765489 . Before requesting a call or sms with your code '),
+                        'You have tried to register . Before requesting a call or sms with your code '),
                 TextSpan(
                     text: ' Wrong number ?',
                     style: TextStyle(
@@ -68,11 +69,10 @@ void verifySmsCode(BuildContext context,WidgetRef ref,String smsCode){
           padding: const EdgeInsets.symmetric(horizontal: 90),
           child: CustomTextField(
             hintText: '- - -  - - -',
-     
             fontSize: 30,
             autoFocus: true,
             keyboardType: TextInputType.number,
-            onChanged: (value){
+            onChanged: (value) {
               if (value.length == 6) {
                 return verifySmsCode(context, ref, value);
               }

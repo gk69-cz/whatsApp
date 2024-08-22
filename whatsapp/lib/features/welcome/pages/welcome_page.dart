@@ -9,7 +9,6 @@ class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
 
   navigateToLoginPage(context){
-    print('hello');
     Navigator.of(context).pushNamedAndRemoveUntil(Routes.login, (route) => false);
   }
 

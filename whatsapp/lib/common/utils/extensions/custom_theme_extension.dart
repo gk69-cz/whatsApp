@@ -4,9 +4,11 @@ import 'package:whatsapp/common/utils/coolors.dart';
 
 extension ExtendedTheme on BuildContext {
   CustomThemeExtension get theme {
+    return Theme.of(this).extension<CustomThemeExtension>() ?? CustomThemeExtension.lightMode;
+}
+  
+}
 
-  return Theme.of(this).extension<CustomThemeExtension>()!;
-  }}
 
 class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
   static const lightMode = CustomThemeExtension(
@@ -63,14 +65,14 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
       Color? circleImageColor,
       Color? backgroundColor,
       Color? greyColor,
-       Color? titleText,
+      Color? titleText,
       Color? blueColor,
       Color? langBtnBgColor,
       Color? langBtnHighlightColor,
-       Color? authAppbarTextColor,
-        Color? photoIconBgColor,
-         Color? photoIconColor,
-       }) {
+      Color? authAppbarTextColor,
+      Color? photoIconBgColor,
+      Color? photoIconColor,
+      }) {
 
 
    return CustomThemeExtension(
@@ -82,14 +84,9 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
     authAppbarTextColor: authAppbarTextColor ?? this.authAppbarTextColor,
     langBtnBgColor: langBtnBgColor ?? this.langBtnBgColor,
     langBtnHighlightColor: langBtnHighlightColor ?? this.langBtnHighlightColor,
-    
-     photoIconBgColor: photoIconBgColor ?? this.photoIconBgColor,
-   
+    photoIconBgColor: photoIconBgColor ?? this.photoIconBgColor,
     photoIconColor: photoIconColor ?? this.photoIconColor,
-   
     );
-
-   
   }
 
   @override
@@ -97,15 +94,17 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
        ThemeExtension<CustomThemeExtension>? other, double t) {
     if(other is! CustomThemeExtension) return this;
     return CustomThemeExtension(
-       circleImageColor: Color.lerp(circleImageColor, other.circleImageColor, t) ,
-     
+      circleImageColor: Color.lerp(circleImageColor, other.circleImageColor, t) ,
+      photoIconBgColor: Color.lerp(photoIconBgColor, other.photoIconBgColor, t) ,
+      photoIconColor: Color.lerp(photoIconColor, other.photoIconColor, t) ,
+      langBtnHighlightColor: Color.lerp(langBtnHighlightColor, other.langBtnHighlightColor, t) ,
       titleText: Color.lerp(titleText, other.titleText, t) ,
       authAppbarTextColor: Color.lerp(authAppbarTextColor, other.authAppbarTextColor, t) ,
       backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t) ,
       greyColor: Color.lerp(greyColor, other.greyColor, t),
       blueColor: Color.lerp(blueColor, other.blueColor, t),
-      langBtnBgColor: Color.lerp(langBtnBgColor, other.langBtnBgColor,
-      t));
+      langBtnBgColor: Color.lerp(langBtnBgColor, other.langBtnBgColor,t)
+      );
     
   }
 }
