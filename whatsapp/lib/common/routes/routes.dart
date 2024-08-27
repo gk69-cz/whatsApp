@@ -1,7 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:whatsapp/common/models/user_model.dart';
 import 'package:whatsapp/features/auth/pages/login_page.dart';
 import 'package:whatsapp/features/auth/pages/user_info_page.dart';
 import 'package:whatsapp/features/auth/pages/verification_page.dart';
+import 'package:whatsapp/features/chat/pages/chat_page.dart';
+import 'package:whatsapp/features/chat/pages/profile_page.dart';
 import 'package:whatsapp/features/contract/pages/contact_page.dart';
 import 'package:whatsapp/features/home/pages/home_page.dart';
 import 'package:whatsapp/features/welcome/pages/welcome_page.dart';
@@ -13,6 +18,8 @@ class Routes {
   static const String userInfo = 'user-info';
   static const String home = 'home';
   static const String contact = 'contact';
+  static const String chat = 'chat';
+  static const String profile = 'profile';
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -37,6 +44,16 @@ class Routes {
         return MaterialPageRoute(builder: (context) => const HomePage());
       case contact:
         return MaterialPageRoute(builder: (context) => const ContactPage());
+      case chat:
+        final UserModel user = settings.arguments as UserModel;
+        return MaterialPageRoute(builder: (context) => ChatPage(user: user));
+      case profile:
+        final UserModel user = settings.arguments as UserModel;
+        return PageTransition(
+          child: ProfilePage(user: user),
+          type: PageTransitionType.fade,
+          duration: const Duration(milliseconds: 800),
+        );
 
       default:
         return MaterialPageRoute(

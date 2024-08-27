@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp/common/utils/extensions/custom_theme_extension.dart';
 
 class custom_icon_button extends StatelessWidget {
   final VoidCallback onTap;

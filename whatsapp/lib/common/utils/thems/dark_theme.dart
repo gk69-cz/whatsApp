@@ -16,7 +16,7 @@ ThemeData darkTheme() {
             statusBarColor: Colors.transparent,
             statusBarBrightness: Brightness.light),
         iconTheme: IconThemeData(color: Coolors.greyDark)),
-    tabBarTheme: TabBarTheme(
+    tabBarTheme: const TabBarTheme(
       indicator: UnderlineTabIndicator(
         borderSide: BorderSide(color: Coolors.greenDark, width: 2.0),
       ),
@@ -42,9 +42,27 @@ ThemeData darkTheme() {
       borderRadius: BorderRadius.all(Radius.circular(20)),
     ), 
     ),
-     floatingActionButtonTheme: FloatingActionButtonThemeData(
+     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: Coolors.greenDark,
       foregroundColor: Colors.white,
+    ),
+    listTileTheme: ListTileThemeData(
+        iconColor: Coolors.greyDark,
+        tileColor: Coolors.backgroundDark),
+    switchTheme: SwitchThemeData(
+      thumbColor: WidgetStateProperty.resolveWith<Color>((states) {
+        if (states.contains(WidgetState.disabled)) {
+          return Colors.grey; // Thumb color when the switch is disabled
+        }
+        return Coolors.greyDark; // Thumb color when the switch is enabled
+      }),
+      trackColor: WidgetStateProperty.resolveWith<Color>((states) {
+        if (states.contains(WidgetState.disabled)) {
+          return Colors
+              .grey.shade400; // Track color when the switch is disabled
+        }
+        return Color(0xFF344047); // Track color when the switch is enabled
+      }),
     ),
   );
 }

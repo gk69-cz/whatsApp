@@ -6,12 +6,12 @@ class StatusHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
+        body: const Center(
           child: Text('status home page'),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {},
-          child: Icon(Icons.edit),
+          child: const Icon(Icons.edit),
         ));
   }
 }

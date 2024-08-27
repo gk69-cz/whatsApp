@@ -20,6 +20,10 @@ dependencies:
   photo_manager: ^3.2.3
   permission_handler: ^10.2.0
   flutter_contacts: ^1.1.9+2
+  url_launcher: ^6.3.0
+  firebase_database: ^11.0.4
+  page_transition: ^2.1.0
+  cached_network_image: ^3.4.0
 
 
 flutter_native_splash:

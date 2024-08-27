@@ -11,12 +11,12 @@ class ChatHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
+        body: const Center(
           child: Text('chat home page'),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () => navigateToContactPage(context),
-          child: Icon(Icons.chat),
+          child: const Icon(Icons.chat),
         ));
   }
 }

@@ -6,12 +6,12 @@ class CallHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
+        body: const Center(
           child: Text('call home page'),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {},
-          child: Icon(Icons.call),
+          child: const Icon(Icons.call),
         ));
   }
 }

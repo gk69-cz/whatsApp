@@ -22,6 +22,8 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
     langBtnHighlightColor: Color(0xFFE8E8ED),
     photoIconBgColor: Color(0xFFF0F2F3),
     photoIconColor: Color(0xFF9DAAB3),
+    profilePageBg: Color(0xFFF7F8FA),
+    ChatTextFieldBg: Colors.white,
 
   );
   static const darkMode = CustomThemeExtension(
@@ -35,6 +37,8 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
     langBtnHighlightColor: Color(0xFF09141a),
     photoIconBgColor: Color(0xFF283339),
     photoIconColor: Color(0xFF61717B),
+    profilePageBg: Color(0xFF0B141A),
+    ChatTextFieldBg: Coolors.greyBackground,
   );
   final Color? circleImageColor;
   final Color? backgroundColor;
@@ -46,6 +50,8 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
   final Color? authAppbarTextColor;
   final Color? photoIconBgColor;
   final Color? photoIconColor;
+  final Color? profilePageBg;
+  final Color? ChatTextFieldBg;
 
   const CustomThemeExtension(
       {this.circleImageColor,
@@ -58,6 +64,8 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
       this.authAppbarTextColor,
       this.photoIconBgColor,
       this.photoIconColor,
+      this.profilePageBg,
+      this.ChatTextFieldBg
       });
 
   @override
@@ -72,6 +80,8 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
       Color? authAppbarTextColor,
       Color? photoIconBgColor,
       Color? photoIconColor,
+      Color? profilePageBg,
+      Color? ChatTextFieldBg,
       }) {
 
 
@@ -86,7 +96,9 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
     langBtnHighlightColor: langBtnHighlightColor ?? this.langBtnHighlightColor,
     photoIconBgColor: photoIconBgColor ?? this.photoIconBgColor,
     photoIconColor: photoIconColor ?? this.photoIconColor,
-    );
+     profilePageBg: profilePageBg ?? this.profilePageBg,
+          ChatTextFieldBg: ChatTextFieldBg ?? this.ChatTextFieldBg
+   );
   }
 
   @override
@@ -103,7 +115,9 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
       backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t) ,
       greyColor: Color.lerp(greyColor, other.greyColor, t),
       blueColor: Color.lerp(blueColor, other.blueColor, t),
-      langBtnBgColor: Color.lerp(langBtnBgColor, other.langBtnBgColor,t)
+      langBtnBgColor: Color.lerp(langBtnBgColor, other.langBtnBgColor,t),
+      profilePageBg: Color.lerp(profilePageBg, other.profilePageBg,t),
+      ChatTextFieldBg: Color.lerp(ChatTextFieldBg, other.ChatTextFieldBg,t)
       );
     
   }
