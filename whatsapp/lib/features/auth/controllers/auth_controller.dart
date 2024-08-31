@@ -29,12 +29,12 @@ class AuthController {
   }
 
   void saveUserInfoToFirestore(
-      {required String username,
+      {required String userName,
       required var profileImage,
       required BuildContext context,
       required bool mounted}) async {
     authRepository.saveUserInfoToFirestore(
-      username: username,
+      userName: userName,
       profileImage: profileImage,
       ref: ref,
       context: context,

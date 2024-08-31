@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:whatsapp/common/helpers/lastSceneMessage.dart';
 import 'package:whatsapp/common/models/user_model.dart';
 import 'package:whatsapp/common/utils/coolors.dart';
@@ -28,11 +27,11 @@ class ProfilePage extends StatelessWidget {
                   child: Column(
                     children: [
                       Text(
-                        user.username,
-                        style: TextStyle(
+                        user.userName,
+                        style: const TextStyle(
                             fontSize: 24, fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       Text(
@@ -40,13 +39,13 @@ class ProfilePage extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 20, color: context.theme.greyColor),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text(
                         "last seen ${lastSceneMessage(user.lastScene)} ago",
                         style: TextStyle(
-                            fontSize: 20, color: context.theme.greyColor),
+                            fontSize: 14, color: context.theme.greyColor),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -59,16 +58,16 @@ class ProfilePage extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 ListTile(
-                  contentPadding: EdgeInsets.only(left: 30.0),
-                  title: Text('Hey there! Iam using Whatsapp'),
+                  contentPadding: const EdgeInsets.only(left: 30.0),
+                  title: const Text('Hey there! Iam using Whatsapp'),
                   subtitle: Text('17 February',
                       style: TextStyle(color: context.theme.greyColor)),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 CustomListTitle(
@@ -78,7 +77,7 @@ class ProfilePage extends StatelessWidget {
                       value: false,
                       onChanged: (value) {},
                     )),
-                CustomListTitle(
+                const CustomListTitle(
                   title: 'Custom notification',
                   leading: Icons.music_note,
                 ),
@@ -90,20 +89,20 @@ class ProfilePage extends StatelessWidget {
                     onChanged: (value) {},
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                CustomListTitle(
+                const CustomListTitle(
                   title: 'Encryption',
                   leading: Icons.lock,
                   subtitle: 'Messages and calls are encrypted',
                 ),
-                CustomListTitle(
+                const CustomListTitle(
                   title: 'Disappering message',
                   leading: Icons.timer,
                   subtitle: 'Off',
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 ListTile(
@@ -112,38 +111,38 @@ class ProfilePage extends StatelessWidget {
                       icon: Icons.group,
                       background: Coolors.greenDark,
                       color: Colors.white),
-                  title: Text('Create group with ${user.username}'),
+                  title: Text('Create group with ${user.userName}'),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 ListTile(
-                  contentPadding: EdgeInsets.only(left: 25, right: 10),
-                  leading: Icon(
+                  contentPadding: const EdgeInsets.only(left: 25, right: 10),
+                  leading: const Icon(
                     Icons.block,
                     color: Color(0xFFF15C6D),
                   ),
                   title: Text(
-                    'Block ${user.username}',
-                    style: TextStyle(
+                    'Block ${user.userName}',
+                    style: const TextStyle(
                       color: Color(0xFFF15C6D),
                     ),
                   ),
                 ),
                 ListTile(
-                  contentPadding: EdgeInsets.only(left: 25, right: 10),
-                  leading: Icon(
+                  contentPadding: const EdgeInsets.only(left: 25, right: 10),
+                  leading: const Icon(
                     Icons.thumb_down,
                     color: Color(0xFFF15C6D),
                   ),
                   title: Text(
-                    'Report ${user.username}',
-                    style: TextStyle(
+                    'Report ${user.userName}',
+                    style: const TextStyle(
                       color: Color(0xFFF15C6D),
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
               ],
@@ -156,7 +155,7 @@ class ProfilePage extends StatelessWidget {
 
   iconWithText({required IconData icon, required String text}) {
     return Padding(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -165,10 +164,10 @@ class ProfilePage extends StatelessWidget {
             size: 30,
             color: Coolors.greenDark,
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Text(
             text,
-            style: TextStyle(fontSize: 20, color: Coolors.greenDark),
+            style: const TextStyle(fontSize: 20, color: Coolors.greenDark),
           ),
         ],
       ),
@@ -208,7 +207,7 @@ class SliverPersistentDelegate extends SliverPersistentHeaderDelegate {
               top: MediaQuery.of(context).viewPadding.top + 15,
               left: currentImagePosition + 50,
               child: Text(
-                user.username,
+                user.userName,
                 style: TextStyle(
                     fontSize: 20, color: Colors.white.withOpacity(percentnext)),
               ),

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp/common/utils/extensions/custom_theme_extension.dart';
 
 class custom_icon_button extends StatelessWidget {
   final VoidCallback onTap;
-  final IconData? icon;
+  final IconData icon;
   final Color? color;
   final double? size;
   final double? minWidth;
@@ -10,7 +11,7 @@ class custom_icon_button extends StatelessWidget {
   final BoxBorder? border; 
   
   const custom_icon_button({
-    super.key, required this.onTap, this.icon, this.color, this.size, this.minWidth, this.background, this.border,
+    super.key, required this.onTap, required this.icon, this.color, this.size, this.minWidth, this.background, this.border,
   });
 
   @override
@@ -33,7 +34,7 @@ class custom_icon_button extends StatelessWidget {
             ),
           icon: Icon(
             icon,
-            color: color ?? Theme.of(context).appBarTheme.iconTheme!.color,
+            color: color ?? Theme.of(context).appBarTheme.iconTheme?.color,
           )),
     );
   }

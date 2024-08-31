@@ -1,9 +1,5 @@
-import 'dart:ui';
 
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whatsapp/common/models/user_model.dart';
 import 'package:whatsapp/common/routes/routes.dart';
@@ -19,7 +15,7 @@ class ContactPage extends ConsumerWidget {
 
   void sendSms(String phoneNumber) async {
     Uri smsUri =
-        Uri.parse("sms:${phoneNumber}?body=Let's chat on new whatsapp");
+        Uri.parse("sms:$phoneNumber?body=Let's chat on new whatsapp");
     if (await launchUrl(smsUri)) {
     } else {}
 
@@ -156,7 +152,7 @@ class ContactPage extends ConsumerWidget {
   ListTile theTile(
       {required IconData leading, required String text, IconData? trailing}) {
     return ListTile(
-      contentPadding: EdgeInsets.only(top: 10, left: 20, right: 10),
+      contentPadding: const EdgeInsets.only(top: 10, left: 20, right: 10),
       leading: CircleAvatar(
         radius: 20,
         backgroundColor: Coolors.greenDark,
@@ -167,7 +163,7 @@ class ContactPage extends ConsumerWidget {
       ),
       title: Text(
         text,
-        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
       ),
       trailing: Icon(
         trailing,

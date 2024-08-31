@@ -46,7 +46,7 @@ ThemeData darkTheme() {
       backgroundColor: Coolors.greenDark,
       foregroundColor: Colors.white,
     ),
-    listTileTheme: ListTileThemeData(
+    listTileTheme: const ListTileThemeData(
         iconColor: Coolors.greyDark,
         tileColor: Coolors.backgroundDark),
     switchTheme: SwitchThemeData(
@@ -61,7 +61,7 @@ ThemeData darkTheme() {
           return Colors
               .grey.shade400; // Track color when the switch is disabled
         }
-        return Color(0xFF344047); // Track color when the switch is enabled
+        return const Color(0xFF344047); // Track color when the switch is enabled
       }),
     ),
   );

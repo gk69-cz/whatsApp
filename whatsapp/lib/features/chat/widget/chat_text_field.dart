@@ -1,31 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whatsapp/common/utils/extensions/custom_theme_extension.dart';
-import 'package:whatsapp/common/widgets/custon_icon_button.dart';
+import 'package:whatsapp/common/widgets/custon_icon_button.dart'; // Ensure the name of this widget is correct
+import 'package:whatsapp/features/chat/controller/chat_controller.dart';
 
-class ChatTextField extends StatefulWidget {
+class ChatTextField extends ConsumerStatefulWidget {
   const ChatTextField({super.key, required this.recieverId});
 
   final String recieverId;
 
   @override
-  State<ChatTextField> createState() => _ChatTextFieldState();
+  ConsumerState<ChatTextField> createState() => _ChatTextFieldState();
 }
 
-class _ChatTextFieldState extends State<ChatTextField> {
+class _ChatTextFieldState extends ConsumerState<ChatTextField> {
 
-late TextEditingController messageContoller;
-bool isMessageEnabled = false;
-@override
+  late TextEditingController messageContoller;
+  bool isMessageEnabled = false;
+
+  void sendTextMessage() async {
+    if (isMessageEnabled) {
+      ref.read(chatControllerProvider).sendTextMessage(
+        context: context,
+        textMessage: messageContoller.text,
+        receiverId: widget.recieverId,
+      );
+      messageContoller.clear();
+    }
+  }
+
+  @override
   void initState() {
     messageContoller = TextEditingController();
-    // TODO: implement initState
     super.initState();
   }
 
   @override
   void dispose() {
     messageContoller.dispose();
-    // TODO: implement dispose
     super.dispose();
   }
 
@@ -41,50 +53,61 @@ bool isMessageEnabled = false;
               maxLines: 4,
               minLines: 1,
               autofocus: true,
-              onChanged: (value){
-               value.isEmpty ? 
-               setState(() {
-                 isMessageEnabled = false;
-               }):setState(() {
-                 isMessageEnabled = true;
-               });
+              onChanged: (value) {
+                setState(() {
+                  isMessageEnabled = value.isNotEmpty;
+                });
               },
               decoration: InputDecoration(
                 hintText: 'Message',
                 hintStyle: TextStyle(
-                  color: context.theme.backgroundColor,                
+                  color: context.theme.greyColor,
                 ),
                 filled: true,
                 isDense: true,
-                border: OutlineInputBorder(
+
+                border: const OutlineInputBorder(
                   borderSide: BorderSide(
                     style: BorderStyle.none,
-                    width: 0
+                    width: 0,
                   ),
-
                 ),
                 prefixIcon: Material(
                   color: Colors.transparent,
-                  child: custom_icon_button(onTap: (){},
-                  icon: Icons.emoji_emotions_outlined,),
+                  child: custom_icon_button( // Ensure this is the correct widget name
+                    onTap: () {},
+                    icon: Icons.emoji_emotions_outlined,
+                      color: context.theme.greyColor,
+                  ),
                 ),
-                suffixIcon: Row(children: [
-                  RotatedBox(quarterTurns: 45,
-                  child: custom_icon_button(onTap: (){},
-                  icon: Icons.attach_file_outlined),),
-                  custom_icon_button(onTap: (){},
-                  icon: Icons.camera_alt_outlined),
-
-                ],),
-                fillColor: context.theme.ChatTextFieldBg,
+                suffixIcon: !isMessageEnabled ? Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    
+                    RotatedBox(
+                      quarterTurns: 45,
+                      child: custom_icon_button(
+                        onTap: () {},
+                        icon: Icons.attach_file_outlined,
+                        color: context.theme.greyColor,
+                      ),
+                    ),
+                    custom_icon_button(
+                      onTap: () {},
+                      icon: Icons.camera_alt_outlined,
+                      color: context.theme.greyColor,
+                    ),
+                  ],
+                ): null,
+                fillColor: context.theme.chatTextFieldBg, // Ensure this extension method is correct
               ),
-            
             ),
-          
           ),
-          SizedBox(width: 5,),
-          custom_icon_button(onTap: (){},
-          icon: isMessageEnabled ? Icons.send_outlined : Icons.mic_none_outlined,
+          const SizedBox(width: 5),
+          custom_icon_button(
+            onTap: sendTextMessage,
+            icon: isMessageEnabled ? Icons.send_outlined : Icons.mic_none_outlined,
+         background: context.theme.authAppbarTextColor,
           ),
         ],
       ),

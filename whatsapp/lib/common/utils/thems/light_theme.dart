@@ -46,7 +46,7 @@ ThemeData lightTheme() {
       backgroundColor: Coolors.greenDark,
       foregroundColor: Colors.white,
     ),
-    listTileTheme: ListTileThemeData(
+    listTileTheme: const ListTileThemeData(
         iconColor: Coolors.greenDark,
         tileColor: Coolors.backgroundLight),
     switchTheme: SwitchThemeData(
@@ -54,14 +54,14 @@ ThemeData lightTheme() {
         if (states.contains(WidgetState.disabled)) {
           return Colors.grey; // Thumb color when the switch is disabled
         }
-        return Color(0xFF83939C); // Thumb color when the switch is enabled
+        return const Color(0xFF83939C); // Thumb color when the switch is enabled
       }),
       trackColor: WidgetStateProperty.resolveWith<Color>((states) {
         if (states.contains(WidgetState.disabled)) {
           return Colors
               .grey.shade400; // Track color when the switch is disabled
         }
-        return Color(0xFFDADFE2); // Track color when the switch is enabled
+        return const Color(0xFFDADFE2); // Track color when the switch is enabled
       }),
     ),
   );

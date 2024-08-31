@@ -25,18 +25,18 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
   File? imageCamera;
   Uint8List? imageGallery;
 
-  late TextEditingController usernameCotroller;
+  late TextEditingController userNameCotroller;
 
   saveUserDataToFirestore() async {
-    String username = usernameCotroller.text;
-    if (username.isEmpty) {
+    String userName = userNameCotroller.text;
+    if (userName.isEmpty) {
       return showAlertDialog(context: context, message: 'No value');
-    } else if (username.length < 3 || username.length > 20) {
+    } else if (userName.length < 3 || userName.length > 20) {
       return showAlertDialog(
-          context: context, message: 'Username must be between 3 and 20');
+          context: context, message: 'userName must be between 3 and 20');
     }
     ref.read(authControllerProvider).saveUserInfoToFirestore(
-        username: username,
+        userName: userName,
         profileImage: imageCamera ?? imageGallery ?? widget.profileImageUrl ?? '',
         context: context,
         mounted: mounted);
@@ -147,13 +147,13 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
 
   @override
   void initState() {
-    usernameCotroller = TextEditingController();
+    userNameCotroller = TextEditingController();
     super.initState();
   }
 
   @override
   void dispose() {
-    usernameCotroller.dispose();
+    userNameCotroller.dispose();
     super.dispose();
   }
 
@@ -222,7 +222,7 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
                   children: [
                     Expanded(
                         child: CustomTextField(
-                      controller: usernameCotroller,
+                      controller: userNameCotroller,
                       textAlign: TextAlign.left,
                       autoFocus: true,
                       hintText: 'Type your name here',

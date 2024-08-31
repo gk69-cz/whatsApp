@@ -15,7 +15,7 @@ class CustomListTitle extends StatelessWidget {
     return Container(
       child: ListTile( 
         onTap: () {},
-        contentPadding: EdgeInsets.fromLTRB(25, 5, 10, 5),
+        contentPadding: const EdgeInsets.fromLTRB(25, 5, 10, 5),
         title: Text(title),
         subtitle: subtitle != null ? Text(
           subtitle!,style: TextStyle(

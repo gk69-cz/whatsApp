@@ -68,14 +68,14 @@ class AuthRepository {
   Future<UserModel?> getCurrentUserInfo() async {
     UserModel? user;
     final userInfo =
-        await firestore.collection('users').doc(auth.currentUser?.uid).get();
+        await firestore.collection('user').doc(auth.currentUser?.uid).get();
     if (userInfo.data() == null) return user;
     user = UserModel.fromMap(userInfo.data()!);
     return user;
   }
 
   void saveUserInfoToFirestore(
-      {required String username,
+      {required String userName,
       required var profileImage,
       required ProviderRef ref,
       required BuildContext context,
@@ -90,7 +90,7 @@ class AuthRepository {
             .storeFiletoFirebase('profileImage/$uid', profileImage);
       }
       UserModel user = UserModel(
-          username: username,
+          userName: userName,
           uid: uid,
           profileImageUrl: profileImageUrl,
           active: true,

@@ -7,10 +7,10 @@ import 'package:whatsapp/common/utils/extensions/custom_theme_extension.dart';
 
 class ContactCard extends StatelessWidget {
   const ContactCard({
-    Key? key,
+    super.key,
     required this.ContactScouce,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   final UserModel ContactScouce;
   final VoidCallback onTap;
@@ -35,7 +35,7 @@ class ContactCard extends StatelessWidget {
                   color: Colors.white,
                 )
               : null),
-      title: Text(ContactScouce.username,
+      title: Text(ContactScouce.userName,
           style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
       subtitle: const Text(
         'Hey there iam using clone',
